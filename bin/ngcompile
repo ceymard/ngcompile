@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
+var path = require('path');
+
 var argv = require('optimist').argv;
 var ngcompile = require('../lib/__module__');
-
 
 var b = new ngcompile.Bundler();
 
@@ -11,11 +12,14 @@ b.addDir('.');
 if (!argv._[0])
 	throw Error('You need to provide an application name !');
 
+var cwd = process.cwd();
+
 b.addBundle({
 	appname: argv._[0],
-	outfile: argv.out || '_default.js',
-	simplified: argv.simple || null,
+	outfile: path.join(cwd, argv.out || '_default.js'),
+	simplified: path.join(cwd, argv.simple || null),
 	base: argv.base || '.',
-	cwd: process.cwd()
+	cwd: cwd
 });
+
 b.bundleAll();
