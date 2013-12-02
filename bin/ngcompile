@@ -2,7 +2,9 @@
 
 var path = require('path');
 
-var argv = require('optimist').argv;
+var argv = require('optimist')
+	.alias('o', 'out')
+	.argv;
 var ngcompile = require('../lib/__module__');
 
 var b = new ngcompile.Bundler();
