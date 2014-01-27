@@ -18,8 +18,8 @@ var cwd = process.cwd();
 
 b.addBundle({
 	appname: argv._[0],
-	outfile: path.join(cwd, argv.out || '_default.js'),
-	simplified: path.join(cwd, argv.simple || null),
+	outfile: path.join(cwd, argv.out || argv.o || '_default.js'),
+	// simplified: path.join(cwd, argv.simple || null),
 	base: argv.base || '.',
 	cwd: cwd
 });
