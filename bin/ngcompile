@@ -4,6 +4,7 @@ var path = require('path');
 
 var argv = require('optimist')
 	.alias('o', 'out')
+	.alias('u', 'uglify')
 	.argv;
 var ngcompile = require('../lib/__module__');
 
@@ -21,7 +22,8 @@ b.addBundle({
 	outfile: path.join(cwd, argv.out || argv.o || '_default.js'),
 	// simplified: path.join(cwd, argv.simple || null),
 	base: argv.base || '.',
-	cwd: cwd
+	cwd: cwd,
+	uglify: argv.uglify
 });
 
 b.bundleAll();
