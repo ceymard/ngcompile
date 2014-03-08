@@ -5,10 +5,12 @@ var path = require('path');
 var argv = require('optimist')
 	.alias('o', 'out')
 	.alias('u', 'uglify')
+	.alias('w', 'watch')
+	.boolean(['u', 'w'])
 	.argv;
 var ngcompile = require('../lib/__module__');
 
-var b = new ngcompile.Bundler();
+var b = new ngcompile.Bundler({watch: argv.watch});
 
 b.addDir('.');
 
